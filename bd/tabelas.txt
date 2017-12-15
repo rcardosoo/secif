@@ -1,0 +1,18 @@
+PARTICIPANTE: matricula_aluno(PK),código_curso(PK)(FK),nome,tipo,nível,sexo
+	código_curso REFERENCIA CURSO
+
+MODALIDADE: código_modalidade(PK),código_categoria(PK)(FK), nome
+	código_categoria REFERENCIA CATEGORIA
+
+PARTICIPAÇÃO: matricula_aluno(PK)(FK), código_modalidade(PK)(FK),pontos
+	matricula_aluno REFENCIA ALUNO
+	código_modalidade REFERENCIA MODALIDADE
+
+CATEGORIA:código_categoria(PK),nome
+
+CURSO:código_curso(PK),código_coordenador(FK)nome,nome_coordenador,turno
+
+COORDENADOR:código_coordenador(PK),nome_coordenador
+
+
+
