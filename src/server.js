@@ -15,19 +15,19 @@ var app = express();
 
 app.set('view engine', 'ejs');
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/assets', express.static('assets'));
 
 var port = process.env.port || 3000;
 
 // Landing page
-app.get('/', function (req, res) { res.render('pages/index'); });
+app.get('/', function (req, res) { res.render('pages/index/index'); });
 
 // Blog page
-app.get('/blog', function (req, res) { res.send('<p>Blog em desenvolvimento. Retorne após o dia 20 de Janeiro de 2018.</p>'); });
+app.get('/blog', function (req, res) { res.render('pages/blog/index'); });
 
 // Sistema
-app.get('/sgsecif/login', function (req, res) { res.send('<p class="text">Sistema em desenvolvimento. Retorne após o dia 20 de Janeiro de 2018.'); });
+app.get('/dashboard/login', function (req, res) { res.render('pages/dashboard/index'); });
 
 app.listen(port);

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <% include ../../partials/head %>
+    </head>
+    <body id="page-top">
+        <nav id="mainNav" class="navbar navbar-expand-md navbar-light bg-transparent">
+            <div class="container">
+                <div id="logo-ifpb">
+                    <a href="/">
+                        <img id="logo" src="/assets/img/campus-joao-pessoa.png" class="img-fluid text-center" alt="">
+                    </a>
+                </div>
+        
+                <div class="navbar-brand nav">
+                    <a href="/">Semana de Esporte e Cultura</a>
+                </div>
+                
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/blog">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#modal-crono">Modalidades &amp; Cronograma</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#faq">FAQ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#inscricao">Inscrição</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="/dashboard/login">Acessar o sistema</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <header>
+            <div class="container">
+                <div id="header-content" class="row">
+                    <div class="col-md-6 col-lg-6 col-xl-6">
+                        <div class="text-left">
+                            <h1 class="mb-5">Gosta de esporte e cultura? Então vem <strong>participar</strong> da SECIF com a gente! <span id="header-content-heart"><i class="fas fa-heart"></i></span></h1>
+                            <a href="#inscricao" class="btn btn-outline btn-xl js-scroll-trigger"><i class="icon-user-follow"></i> Realizar Inscrição</a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-6 col-xl-6 text-center">
+                        <div id="header-atividade" class="container">
+                            <img id="header-img-atividade" src="/assets/img/atividade-14.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <% include modal-crono %>
+        <% include inscricao %>
+        <% include faq %>
+        <% include ../../partials/footer %>
+        
+        <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function() {
+                setInterval(function imgCarrossel() {
+                    let url_img_atividade = "/assets/img/atividade-";
+                    let min = 1, max = 41;
+                    let random = Math.floor(Math.random() * (max - min + 1)) + min;
+                    url_img_atividade += random;
+                    url_img_atividade += '.png';
+                    $('#header-img-atividade').attr("src", url_img_atividade);
+                }, 3000);
+            });
+        </script>
+    </body>
+</html>

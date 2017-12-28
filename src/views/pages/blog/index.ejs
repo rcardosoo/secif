@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <% include ../../partials/head %>
+    </head>
+    <body id="page-top">
+        <nav id="mainNav" class="navbar navbar-expand-md navbar-light bg-transparent">
+            <div class="container">
+                <div id="logo-ifpb">
+                    <a href="/">
+                        <img id="logo" src="/assets/img/campus-joao-pessoa.png" class="img-fluid text-center" alt="">
+                    </a>
+                </div>
+        
+                <div class="navbar-brand nav">
+                    <a href="/">Semana de Esporte e Cultura</a>
+                </div>
+                
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/#crono-modalidades">Modalidades & Cronograma</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/#faq">FAQ</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="/#inscricao">Inscrição</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="/dashboard/login">Acessar o sistema</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <header>
+            <div class="container">
+                <div id="header-content" class="row">
+                    <div class="col-md-6 col-lg-6 col-xl-6">
+                        <div class="text-left">
+                            <h1 class="mb-5">Quer saber mais sobre a SECIF?<br><br>Então pega um <span class="header-content-heart"><i class="icon-cup"></i></span> porque a gente tem muito pra te contar!!!</h1>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-6 col-xl-6 text-center">
+                        <div id="header-atividade" class="container">
+                            <img id="header-img-atividade" src="/assets/img/atividade-14.png" height="10%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <section id="blog-content" class="container-fluid">
+            <div class="container">
+                <p>Blog em desenvolvimento.</p>
+            </div>
+        </section>
+        
+        <% include ../../partials/footer %>
+        <% include ../../partials/scripts %>
+
+        <!-- <script>
+            $(document).ready(function() {
+                setInterval(function imgCarrossel() {
+                    let url_img_atividade = "/assets/img/atividade-";
+                    let min = 1, max = 41;
+                    let random = Math.floor(Math.random() * (max - min + 1)) + min;
+                    url_img_atividade += random;
+                    url_img_atividade += '.png';
+                    $('#header-img-atividade').attr("src", url_img_atividade);
+                }, 3000);
+            });
+        </script> -->
+    </body>
+</html>
