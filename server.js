@@ -13,13 +13,14 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
+var port = process.env.PORT || 5000;
+
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/assets', express.static('assets'));
 
-var port = process.env.port || 5000;
 
 // Landing page
 app.get('/', function (req, res) { res.render('pages/index/index'); });
@@ -30,4 +31,6 @@ app.get('/blog', function (req, res) { res.render('pages/blog/index'); });
 // Sistema
 app.get('/dashboard/login', function (req, res) { res.render('pages/dashboard/index'); });
 
-app.listen(port);
+app.listen(port, "0.0.0.0", function() {
+	console.log("Listening on Port 5000");
+});
