@@ -1,7 +1,35 @@
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
-        <% include ../../partials/head %>
+        
+        <title>SECIF 2018</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Semana de Esporte e Cultura do IFPB - Campus João Pessoa">
+        <meta name="author" content="IFPB - Campus João Pessoa">
+        <meta name="keywords" content="semana, artes, esporte, cultura, ifpb, joão pessoa, paraíba">
+        
+        <!-- OG Tags -->
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@secif" />
+        <meta name="twitter:creator" content="@ifpbcampusjp" />
+        <meta property="og:url" content="http://joaopessoa.ifpb.edu.br/secif/" />
+        <meta property="og:title" content="Semana de Esporte e Cultura do IFPB - Campus João Pessoa" />
+        <meta property="og:description" content="In the early days, Twitter grew so quickly that it was almost impossible to add new features because engineers spent their time trying to keep the rocket ship from stalling." />
+        <meta property="og:image" content="http://graphics8.nytimes.com/images/2011/12/08/technology/bits-newtwitter/bits-newtwitter-tmagArticle.jpg" />
+
+         <!-- Bootstrap 3 e CSS local -->
+         <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+         <script
+         src="https://code.jquery.com/jquery-3.2.1.min.js"
+         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+         crossorigin="anonymous"></script>
+
+         <!-- Simple Line Icons -->
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css">
     </head>
     <body>
         <div class="container" style="width: 40%; margin-top: 50px;">
@@ -11,7 +39,7 @@
         </center>
     
         <div class="panel panel-success">
-            <div class="panel-heading" style="margin-left: 20px;"><strong>Autenticação</strong></div>
+            <div class="panel-heading"><strong>Autenticação</strong></div>
             <div class="panel-body" style="padding: 20px;">
                 <%if (typeof mensagem != 'undefined') { %>
                     <div class="alert alert-danger"><%= mensagem %></div>
