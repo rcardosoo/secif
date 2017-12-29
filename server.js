@@ -11,12 +11,19 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mysql      = require('mysql');
+var session = require('express-session');
 
 var app = express();
 
 var port = process.env.PORT || 5000;
 
 app.set('view engine', 'ejs');
+
+app.use(session({
+	secret: '2C44-4D44-WppQ38S',
+	resave: true,
+	saveUninitialized: true
+}));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -63,28 +70,21 @@ app.post('/registrar', (req, res) =>{
 	'${tamanho}',
 	'${atestado}',
 	'${lista_email}')`, function (error, results) {
-		console.log("Entrou no callback inscricao");
 
 		if (error != null && typeof error != 'undefined') {
 			console.log("erro na query sql erro= "+error);
 		} else {
 			if (results == "" || typeof results == 'undefined') {
-				console.log("a query nao retornou nada");
 			} else {
-				console.log("existem resultados");
 				if (req.body.tipo == 1) {
-					console.log("É aluno");
 					execSQLQuery(`INSERT INTO aluno VALUES('${req.body.matricula}',
 					NULL,
 					'${req.body.curso}',
 					'${req.body.periodo_ano}')`, callbackResult);
 				} else {
 					if (req.body.tipo == 2) {
-						console.log("É servidor do if");
 						var terceirizado = 0;
 					} else if (req.body.tipo == 3) {
-						console.log("É terceirizado");
-						var terceirizado = 1;
 					}
 					execSQLQuery(`INSERT INTO funcionario VALUES('${req.body.matricula}',
 					'${req.body.cargo}',
@@ -96,21 +96,17 @@ app.post('/registrar', (req, res) =>{
 	});
 
 	function callbackResult(error, results) {
-		console.log("Entrou no callback result");
 		var msg = "";
 		var sv = "";
 
 		if (error != null && typeof error != 'undefined') {
-			console.log("erro na query sql");
 			msg = "Um problema aconteceu com o banco de dados!";
 			sv = "danger";
 		} else {
 			if (results == "" || typeof results == 'undefined') {
-				console.log("a query nao retornou nada");
 				msg = "Algum erro aconteceu..";
 				sv = "warning";
 			} else {
-				console.log("existem resultados");
 				msg = "Sua inscrição foi realizada com sucesso!";
 				sv = "success";
 			}
@@ -123,8 +119,37 @@ app.post('/registrar', (req, res) =>{
 // Blog page
 app.get('/blog', function (req, res) { res.render('pages/blog/index'); });
 
+app.post('/validar', function (req, res) {
+	var matricula = req.body.matricula;
+	var senha     = req.body.senha;
+
+	if (matricula == "123" && senha == "123") {
+		session.matricula = matricula;
+		session.logado = true;
+		return res.redirect('/dashboard/index');   
+	  } else {
+		res.render('pages/dashboard/login', { mensagem: 'Login ou senha incorretos'});
+	  }
+});
+
+app.get('/logout', function(req, res, next) {
+	session.logado = false;
+	session.matricula = "";
+	return res.redirect('/'); 
+});
+
 // Sistema
-app.get('/dashboard/login', function (req, res) { res.render('pages/dashboard/index'); });
+app.get('/dashboard/login', function (req, res) { res.render('pages/dashboard/login'); });
+
+app.get('/dashboard/index', function (req, res) {
+	if (session.logado) {
+		console.log(session.matricula);
+		res.render('pages/dashboard/index');
+	  }
+	  else {
+		res.render('pages/dashboard/login');
+	  } 
+});
 
 app.listen(port, "0.0.0.0", function() {
 	console.log("Listening on Port 5000");

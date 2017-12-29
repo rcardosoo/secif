@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <% include ../../partials/head %>
+    </head>
+    <body>
+        <div class="container" style="width: 40%; margin-top: 50px;">
+    
+        <center>
+            <img src="/assets/img/logo3.png" style="margin-bottom: 30px;">
+        </center>
+    
+        <div class="panel panel-success">
+            <div class="panel-heading" style="margin-left: 20px;"><strong>Autenticação</strong></div>
+            <div class="panel-body" style="padding: 20px;">
+                <%if (typeof mensagem != 'undefined') { %>
+                    <div class="alert alert-danger"><%= mensagem %></div>
+                <% } %>
+                <form class="form" method="post" action="/validar">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">
+                            <span class="icon-user"></span>
+                        </span>
+                        <input type="text" class="form-control" name="matricula" placeholder="Matrícula" aria-describedby="basic-addon1">
+                    </div>
+                    <br />
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">
+                            <span class="icon-lock"></span>
+                        </span>
+                        <input type="password" class="form-control" name="senha" placeholder="Senha" aria-describedby="basic-addon1">
+                    </div>
+                    <br />
+                    <input type="submit" value="Entrar" class="btn btn-info form-control" style="background-color: green;">
+                    <hr />
+                    <p><a href="/">Voltar</a> para a página inicial</p>       
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
