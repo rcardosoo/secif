@@ -12,6 +12,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mysql      = require('mysql');
 var session = require('express-session');
+var bcrypt = require('bcrypt');
 
 var app = express();
 
@@ -54,6 +55,7 @@ app.post('/registrar', (req, res) =>{
 	const atestado = req.body.atestado;
 	const lista_email = req.body.lista_email;
 
+	let senhaHash = bcrypt.hashSync(senha, 10);
 	execSQLQuery(`INSERT INTO participante VALUES('${matricula}',
 	'${nome}',
 	'${email}',
@@ -61,7 +63,7 @@ app.post('/registrar', (req, res) =>{
 	'${endereco}',
 	'${cidade}',
 	'${fone}',
-	'${senha}',
+	'${senhaHash}',
 	'${data_nascimento}',
 	'${complemento}',
 	'${bairro}',
@@ -123,13 +125,32 @@ app.post('/validar', function (req, res) {
 	var matricula = req.body.matricula;
 	var senha     = req.body.senha;
 
-	if (matricula == "123" && senha == "123") {
-		session.matricula = matricula;
-		session.logado = true;
-		return res.redirect('/dashboard/index');   
-	  } else {
-		res.render('pages/dashboard/login', { mensagem: 'Login ou senha incorretos'});
-	  }
+	if(typeof matricula != 'undefined') filter = ' WHERE matricula=' + matricula;
+	execSQLQuery('SELECT * FROM participante' + filter, function(error, results) {
+		if (error != null && typeof error != 'undefined') {
+			console.log("Um problema aconteceu com o banco de dados! "+error);
+			res.render('pages/dashboard/login', { mensagem: 'Ocorreu um problema..'});
+		} else {
+			if (results == "" || typeof results == 'undefined') {
+				console.log("Algum erro aconteceu..");
+				res.render('pages/dashboard/login', { mensagem: 'Dados inválidos'});
+			} else {
+				console.log(senha);
+				var stringResult = JSON.stringify(results);
+				var jsonResult =  JSON.parse(stringResult);
+				var part = jsonResult[0];
+				if(bcrypt.compareSync(senha,part.senha)) {
+					console.log("As senhas bateram");
+					session.matricula = part.matricula;
+					session.logado = true;
+					return res.redirect('/dashboard/index');  
+				} else {
+					res.render('pages/dashboard/login', { mensagem: 'Login ou senha incorretos'});
+				}
+			}
+		}
+	});
+
 });
 
 app.get('/logout', function(req, res, next) {
