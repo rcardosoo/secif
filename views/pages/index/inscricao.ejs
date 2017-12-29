@@ -29,98 +29,133 @@
         <div class="col-md-6 col-lg-6 col-xl-6">
             <h3>Inscrição</h3>
             <hr>
-            <form>    
+            <form method="POST" action="/registrar">    
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputEmail4">Email</label>
-                        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                        <input type="email" class="form-control" id="inputEmail4" placeholder="Email" name="email">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="inputPassword4">Senha</label>
-                        <input type="password" class="form-control" id="inputPassword4" placeholder="Senha">
+                        <input type="password" class="form-control" id="inputPassword4" placeholder="Senha" name="senha">
                     </div>
                 </div>
                             
                 <div class="form-group">
                     <label for="inputAddress">Nome completo</label>
-                    <input type="text" class="form-control" id="inputNome" placeholder="José da Silva">
+                    <input type="text" class="form-control" id="inputNome" placeholder="José da Silva" name="nome">
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputCity">Data de Nascimento</label>
-                        <input type="text" class="form-control" id="inputCity">
+                        <input type="date" class="form-control" id="inputCity" name="data_nascimento">
                     </div>
+
                     <div class="form-group col-md-6">
-                        <label for="inputAddress">Eu sou...</label>
-                        <select id="inputState" class="form-control">
-                                <option selected>Escolha...</option>
-                                <option>Docentes</option>
-                                <option>Estudante</option>
-                                <option>Técnico Administrativo</option>
-                                <option>Terceirizado</option>
-                        </select>
+                        <label for="inputCity">Sexo</label>
+                        <select id="inputState" class="form-control" name="sexo">
+                            <option selected>Escolha...</option>
+                            <option value="M">Masculino</option>
+                            <option value="F">Feminino</option>
+                    </select>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="inputAddress">Endereço</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="Av. Primeiro de Maio, 720">
+                    <input type="text" class="form-control" id="inputAddress" placeholder="Av. Primeiro de Maio, 720" name="endereco">
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputAddress2">Complemento</label>
-                        <input type="text" class="form-control" id="inputAddress2" placeholder="Casa, apartamento etc">
+                        <input type="text" class="form-control" id="inputAddress2" placeholder="Casa, apartamento etc" name="complemento">
                     </div>
                     <div class="form-group col-md-6">
                             <label for="inputAddress2">Bairro</label>
-                            <input type="text" class="form-control" id="inputAddress2" placeholder="Jaguaribe">
+                            <input type="text" class="form-control" id="inputAddress2" placeholder="Jaguaribe" name="bairro">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputCity">Cidade</label>
-                        <input type="text" class="form-control" id="inputCity">
+                        <input type="text" class="form-control" id="inputCity" name="cidade">
                     </div>
                     <div class="form-group col-md-3">
                         <label for="inputState">UF</label>
-                        <select id="inputState" class="form-control">
+                        <select id="inputState" class="form-control" name="uf">
                             <option selected>Escolha...</option>
-                            <option>PA</option>
-                            <option>PB</option>
-                            <option>PE</option>
-                            <option>PI</option>
+                            <option value="PA">PA</option>
+                            <option value="PB">PB</option>
+                            <option value="PE">PE</option>
+                            <option value="PI">PI</option>
                         </select>
                     </div>
                     <div class="form-group col-md-3">
                         <label for="inputZip">CEP</label>
-                        <input type="text" class="form-control" id="inputZip">
+                        <input type="text" class="form-control" id="inputZip" name="cep">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputCity">Matrícula</label>
-                        <input type="text" class="form-control" id="inputCity">
+                        <input type="text" class="form-control" id="inputCity" name="matricula">
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="inputState">Curso</label>
-                        <select id="inputState" class="form-control">
+                        <label for="inputAddress">Eu sou...</label>
+                        <select id="inputState" class="form-control" name="tipo" onchange="swapInput(this.value)">
                             <option selected>Escolha...</option>
-                            <option>PA</option>
-                            <option>PB</option>
-                            <option>PE</option>
-                            <option>PI</option>
+                            <option value="1">Estudante</option>
+                            <option value="2">Servidor</option>
+                            <option value="3">Terceirizado</option>
                         </select>
                     </div>
-                    <div class="form-group col-md-4">
+
+                    <div class="form-group col-md-6" id="inptAluno2">
+                        <label for="inputState">Período</label>
+                        <select id="inputState" class="form-control" name="periodo_ano">
+                            <option selected>Escolha...</option>
+                            <option value="2016.1">2016.1</option>
+                            <option value="2016.2">2016.2</option>
+                            <option value="2017.1">2017.1</option>
+                            <option value="2017.2">2017.2</option>
+                        </select>
+                    </div>
+
+                    <div id="inptFuncionario1" class="form-group col-md-6" style="display: none;">
+                        <label for="inputState">Cargo</label>
+                        <input type="text" class="form-control" id="inputCity" name="cargo">
+                    </div>
+    
+                    <div id="inptFuncionario2" class="form-group col-md-6" style="display: none;">
+                        <label for="inputState">Setor</label>
+                        <input type="text" class="form-control" id="inputCity" name="setor">
+                    </div>
+
+                    <div class="form-group col-md-6" id="inptAluno1">
+                        <label for="inputState">Curso</label>
+                        <select id="inputState" class="form-control" name="curso">
+                            <option selected>Escolha...</option>
+                            <option value="1">TECNOLOGIA EM SISTEMAS PARA INTERNET</option>
+                            <option value="2">TECNOLOGIA EM REDES DE COMPUTADORES</option>
+                            <option value="3">BACHARELADO EM ENGENHARIA ELÉTRICA</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-6">
                         <label for="inputZip">Tamanho da camisa</label>
-                        <select id="inputState" class="form-control">
+                        <select id="inputState" class="form-control" name="tamanho_camisa">
                                 <option selected>Escolha...</option>
-                                <option>Pequena (P)</option>
-                                <option>Média (M)</option>
-                                <option>Grande (G)</option>
-                                <option>Extra Grande (GG)</option>
+                                <option value="P">Pequena (P)</option>
+                                <option value="M">Média (M)</option>
+                                <option value="G">Grande (G)</option>
+                                <option value="GG">Extra Grande (GG)</option>
                             </select>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="inputZip">Telefone</label>
+                        <input type="text" class="form-control" placeholder="(xx) 90000-0000" id="inputCity" name="fone">
                     </div>
                 </div>
                 
@@ -128,10 +163,10 @@
                 <div class="form-group">
                     <div class="form-check">
                     <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox"> Já entreguei o atestado de apitidão física no início do ano letivo.
+                        <input class="form-check-input" type="checkbox" value="1" name="atestado"> Já entreguei o atestado de apitidão física no início do ano letivo.
                     </label>
                     <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox"> Me inscrever na lista de e-mail da Semana de Esporte e Cultura.
+                        <input class="form-check-input" type="checkbox" value="1" name="lista_email"> Me inscrever na lista de e-mail da Semana de Esporte e Cultura.
                     </label>
                 </div>
                 
@@ -140,3 +175,23 @@
         </div>
     </div>
 </section>
+
+<script type="text/javascript">
+    function swapInput(tipo) {
+        var aluno1 = document.getElementById("inptAluno1");
+        var aluno2 = document.getElementById("inptAluno2");
+        var funcionario1 = document.getElementById("inptFuncionario1");
+        var funcionario2 = document.getElementById("inptFuncionario2");
+        if (tipo == '1') {
+            aluno1.style.display = "block";
+            aluno2.style.display = "block";
+            funcionario1.style.display = "none";
+            funcionario2.style.display = "none";
+        } else {
+            aluno1.style.display = "none";
+            aluno2.style.display = "none";
+            funcionario1.style.display = "block";
+            funcionario2.style.display = "block";
+        }
+    }
+</script>
