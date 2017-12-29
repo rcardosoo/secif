@@ -1,12 +1,4 @@
--- Script SQL do Banco de Dados do Sistema de Gestão do SECIF.
--- Copyright (C) 2017-18, Instituto Federal da Paraíba - IFPB.
---
--- SGBD: MySQL (v 5.7)
-
-CREATE DATABASE secif_db;
-USE secif_db;
-
-CREATE TABLE TipoParticipante (
+﻿CREATE TABLE tipo_participante (
 	  id_tipo INT NOT NULL AUTO_INCREMENT,
 	  area VARCHAR(128) NOT NULL,
 	  responsabilidade VARCHAR(128) NOT NULL,
@@ -14,9 +6,9 @@ CREATE TABLE TipoParticipante (
 	  turno VARCHAR(26),
 	  periodo VARCHAR(128),
 	  PRIMARY KEY(id_tipo)
-)
+);
 
-CREATE TABLE Participante (
+CREATE TABLE participante (
 	  matricula		INT(6) NOT NULL,
 	  identidade 		VARCHAR(26),
 	  nome 			VARCHAR(128),
@@ -28,33 +20,33 @@ CREATE TABLE Participante (
 	  uf 				VARCHAR(2),
 	  fone 			VARCHAR(26),
 	  cargo 			INT,
-	  PRIMARY KEY(id_participante),
-	  FOREIGN KEY(cargo) REFERENCES TipoParticipante(id_tipo)
-)
+	  PRIMARY KEY(matricula),
+	  FOREIGN KEY(cargo) REFERENCES tipo_participante(id_tipo)
+);
 
-CREATE TABLE Participacao (
+CREATE TABLE marticipacao (
 	  id_participacao NOT NULL UTO_INCREMENT,
 	  participante 	INT NOT NULL,
 	  modalidade 		INT NOT NULL,
 	  pontos			INT DEFAULT 0,
 	  PRIMARY KEY(id_participacao),
-	  FOREIGN KEY(participante) REFERENCES Participante(id_participante),
-	  FOREIGN KEY(modalidade) REFERENCES Modalidade(id_modalidade)
-)
+	  FOREIGN KEY(participante) REFERENCES participante(matricula),
+	  FOREIGN KEY(modalidade) REFERENCES modalidade(id_modalidade)
+);
 
-CREATE TABLE Categoria (
+CREATE TABLE mategoria (
 	  id_categoria 	INT NOT NULL AUTO_INCREMENT,
 	  nome 			VARCHAR(30) NOT NULL,
 	  descricao 		VARCHAR(30) NOT NULL,
 	  PRIMARY KEY(id_categoria)
-)
+);
 
-CREATE TABLE Modalidade (
+CREATE TABLE modalidade (
 	  id_modalidade 	INT NOT NULL AUTO_INCREMENT,
 	  nome 			VARCHAR(128) NOT NULL,
 	  descricao 		VARCHAR(256),
 	  equipe_quant	INT,
 	  categoria 		INT,
 	  PRIMARY KEY(id_modalidade),
-	  FOREIGN KEY(categoria) REFERENCES Categoria(id_categoria)
-)
+	  FOREIGN KEY(categoria) REFERENCES categoria(id_categoria)
+);

@@ -1,1 +1,80 @@
-<p class="text">Sistema em desenvolvimento.</p>
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <meta name="description" content="Semana de Esporte e Cultura do IFPB - Campus João Pessoa">
+            <meta name="author" content="IFPB - Campus João Pessoa">
+            <meta name="keywords" content="semana, artes, esporte, cultura, ifpb, joão pessoa, paraíba">
+            
+            <!-- OG Tags -->
+            <meta name="twitter:card" content="summary" />
+            <meta name="twitter:site" content="@secif" />
+            <meta name="twitter:creator" content="@ifpbcampusjp" />
+            <meta property="og:url" content="http://joaopessoa.ifpb.edu.br/secif/" />
+            <meta property="og:title" content="Semana de Esporte e Cultura do IFPB - Campus João Pessoa" />
+            <meta property="og:description" content="In the early days, Twitter grew so quickly that it was almost impossible to add new features because engineers spent their time trying to keep the rocket ship from stalling." />
+            <meta property="og:image" content="http://graphics8.nytimes.com/images/2011/12/08/technology/bits-newtwitter/bits-newtwitter-tmagArticle.jpg" />
+            
+            <title>SECIF 2018</title>
+            <!-- favicon -->
+            
+            <!-- Fontes -->
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
+            
+            <!-- Simple Line Icons -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css">
+            
+            <!-- Bootstrap 4 e CSS local -->
+            <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+
+            <!-- Simple Line Icons -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css">
+    </head>
+    <body>
+       <!-- Static navbar -->
+        <nav class="navbar navbar-default">
+                <div class="container">
+                    <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/">Secif</a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Meus Times</a></li>
+                        <li><a href="/logout">Sair</a></li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                    </div>
+                </div><!--/.container-fluid -->
+        </nav>
+
+        <div class="container">
+                <p style="float: left">Bem vindo, <%= usuario.nome %></p>
+
+                <button class="btn btn-warning" style="float: right;margin-left:10px;">
+                        <span class="icon-trash"></span>&nbsp;Resetar</button>
+                
+                <button class="btn btn-info" style="float: right;">
+                        <span class="icon-note"></span>&nbsp;Salvar modalidades</button>
+                <br><br><br>
+
+            <div class="alert alert-info">Sistema em desenvolvimento.</div>
+        </div>
+
+</body>
+</html>

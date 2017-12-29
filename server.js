@@ -143,7 +143,7 @@ app.post('/validar', function (req, res) {
 					console.log("As senhas bateram");
 					session.matricula = part.matricula;
 					session.logado = true;
-					return res.redirect('/dashboard/index');  
+					res.render('pages/dashboard/index', { usuario: part}); 
 				} else {
 					res.render('pages/dashboard/login', { mensagem: 'Login ou senha incorretos'});
 				}
